@@ -165,6 +165,11 @@ textarea {
   color: var(--primary-dark);
 }
 
+.btn-small {
+  padding: 0.65rem 1.2rem;
+  font-size: 0.9rem;
+}
+
 .nav-cta {
   white-space: nowrap;
 }
@@ -470,7 +475,7 @@ textarea {
 }
 
 .content-panel p,
-.product-card p,
+.medicine-card p,
 .service-card p,
 .contact-list li {
   color: var(--muted);
@@ -507,54 +512,71 @@ textarea {
   text-align: center;
 }
 
-.product-grid,
-.service-grid {
+.medicines-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
-.product-card,
-.service-card,
-.form-card,
-.contact-card {
+.medicine-card {
   background: var(--white);
   border: 1px solid rgba(28, 140, 125, 0.08);
   border-radius: var(--radius);
   box-shadow: 0 15px 32px rgba(16, 61, 52, 0.05);
-}
-
-.product-card {
   padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.icon-box {
-  display: grid;
-  place-items: center;
-  width: 62px;
-  height: 62px;
-  font-size: 1.8rem;
-  border-radius: 18px;
-  margin-bottom: 1.1rem;
+.medicine-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(16, 61, 52, 0.12);
 }
 
-.icon-box.blue { background: var(--blue); }
-.icon-box.green { background: #eafcf4; }
-.icon-box.orange { background: var(--orange); }
-.icon-box.purple { background: var(--purple); }
+.med-header {
+  margin-bottom: 1rem;
+}
 
-.product-card h3,
-.service-card h3,
-.form-card h3 {
-  margin: 0 0 0.65rem;
-  font-size: 1.3rem;
+.med-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.75rem;
+  background: rgba(28, 140, 125, 0.12);
+  border: 1px solid rgba(28, 140, 125, 0.15);
+  border-radius: 999px;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.medicine-card h3 {
+  margin: 0.8rem 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.medicine-card p {
+  font-size: 0.95rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.med-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 1rem 0;
 }
 
 .service-grid {
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
 }
 
 .service-card {
+  background: var(--white);
+  border: 1px solid rgba(28, 140, 125, 0.08);
+  border-radius: var(--radius);
+  box-shadow: 0 15px 32px rgba(16, 61, 52, 0.05);
   padding: 1.8rem 1.5rem;
   text-align: center;
 }
@@ -599,6 +621,10 @@ textarea {
 
 .contact-card,
 .form-card {
+  background: var(--white);
+  border: 1px solid rgba(28, 140, 125, 0.08);
+  border-radius: var(--radius);
+  box-shadow: 0 15px 32px rgba(16, 61, 52, 0.05);
   padding: 2rem;
 }
 
@@ -654,9 +680,7 @@ textarea {
 @media (max-width: 960px) {
   .hero-grid,
   .split-section,
-  .contact-grid,
-  .product-grid,
-  .service-grid {
+  .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -686,6 +710,10 @@ textarea {
   .nav-cta {
     display: none;
   }
+
+  .service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -693,10 +721,9 @@ textarea {
   .hero-grid,
   .split-section,
   .stats-grid,
-  .product-grid,
-  .service-grid,
   .contact-grid,
-  .cta-inner {
+  .cta-inner,
+  .service-grid {
     grid-template-columns: 1fr;
     flex-direction: column;
     align-items: flex-start;
@@ -728,7 +755,7 @@ textarea {
     right: 0;
   }
 
-  .cta-inner {
-    display: flex;
+  .medicines-grid {
+    grid-template-columns: 1fr;
   }
 }
